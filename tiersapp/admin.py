@@ -1,9 +1,9 @@
 from django.contrib import admin
-from .models import Thumbnail, Tier
+from .models import ThumbnailType, Tier
 
 # Register your models here.
 
-@admin.register(Thumbnail)
+@admin.register(ThumbnailType)
 class ThumnbnailAdmin(admin.ModelAdmin):
     fields = ('name', 'height')
     list_display = ('name',)
