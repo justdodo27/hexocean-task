@@ -23,6 +23,9 @@ There are accounts tiers:
 ## Live preview
 https://images-django.herokuapp.com
 
+## Ready to use Postman Requests
+https://www.postman.com/satellite-specialist-27423978/workspace/images/collection/18473958-6fc7ad6d-597d-4806-83d9-56e8a65e535e?ctx=documentation
+
 ## Using
 - To access data you need to provide access token, which can be generated from `https://images-django.herokuapp.com/api/token/`
 - User credentials:
