@@ -17,4 +17,5 @@ There are accounts tiers:
 
 - Build docker containers `docker-compose build`
 - Migrate `docker-compose run web python3 manage.py migrate`
+- Load data `docker-compose run web python3 manage.py loaddata data.json`
 - Run the container `docker-compose up`
