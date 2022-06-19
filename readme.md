@@ -19,3 +19,6 @@ There are accounts tiers:
 - Migrate `docker-compose run web python3 manage.py migrate`
 - Load data `docker-compose run web python3 manage.py loaddata data.json`
 - Run the container `docker-compose up`
+
+## Using
+- To access data you need to provide access token, which can be generated from ``

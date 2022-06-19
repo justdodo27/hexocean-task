@@ -4,6 +4,7 @@ from django.http import Http404, HttpResponse, StreamingHttpResponse
 from rest_framework import generics
 from rest_framework.response import Response
 from rest_framework.views import APIView
+from rest_framework.exceptions import NotAuthenticated
 from .models import Image, TemporaryURL
 from .serializers import ImageSerializer, ImageCreateSerializer, ImageListSerializer
 
@@ -13,6 +14,8 @@ class ImageListView(generics.ListCreateAPIView):
     queryset = Image.objects.all()
 
     def get_queryset(self):
+        if self.request.user.is_anonymous:
+            raise NotAuthenticated("No Token Provided")
         user = self.request.user
         queryset = Image.objects.all().filter(owner=user)
         return queryset
@@ -27,6 +30,13 @@ class ImageDetailView(generics.RetrieveUpdateDestroyAPIView):
     queryset = Image.objects.all()
     serializer_class = ImageSerializer
 
+    def get_queryset(self):
+        if self.request.user.is_anonymous:
+            raise NotAuthenticated("No Token Provided")
+        user = self.request.user
+        queryset = Image.objects.all().filter(owner=user)
+        return queryset
+
     def retrieve(self, request, *args, **kwargs):
         instance = self.get_object()
         if instance.owner.tier.original_link_visible == False:
@@ -37,6 +47,8 @@ class ImageDetailView(generics.RetrieveUpdateDestroyAPIView):
 
 class CreateTemporaryView(APIView):
     def get(self, request, pk, seconds):
+        if request.user.is_anonymous:
+            raise NotAuthenticated("No Token Provided")
         user = request.user
         image = Image.objects.filter(owner=user, id=pk).first()
 
