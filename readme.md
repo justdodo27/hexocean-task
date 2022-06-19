@@ -20,5 +20,29 @@ There are accounts tiers:
 - Load data `docker-compose run web python3 manage.py loaddata data.json`
 - Run the container `docker-compose up`
 
+## Live preview
+https://images-django.herokuapp.com
+
 ## Using
-- To access data you need to provide access token, which can be generated from ``
+- To access data you need to provide access token, which can be generated from `https://images-django.herokuapp.com/api/token/`
+- User credentials:
+  - Basic
+    - username: ```basic_user```
+    - password: ```Basic123```
+  - Premium
+    - username: ```premium_user```
+    - password: ```Premium123```
+  - Enterprise
+   - username: ```enterprise_user```
+    - password: ```Enterprise123**```
+- API endpoints:
+  - GET `/api/images`
+    - List all images send by user
+  - POST `/api/images`
+    - Upload new image
+  - GET `/api/images/<int:pk>`
+    - Get information about image
+  - GET `/api/images/<int:pk>/<int:seconds>`
+    - Create temporary link to download image (if possible)
+  - GET `/api/temprul/<int:pk>`
+    - Download image from temporary url if possible
