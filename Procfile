@@ -1,1 +1,1 @@
-web: gunicorn images-django.wsgi --log-file -
+web: gunicorn image_uploader_project.wsgi --log-file -
