@@ -11,3 +11,5 @@ six==1.16.0
 sqlparse==0.4.2
 psycopg2>=2.8
 dj-database-url
+gunicorn
+whitenoise
